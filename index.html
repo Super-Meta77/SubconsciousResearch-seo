@@ -255,7 +255,7 @@
         id="contactForm"
         class="mt-8 max-w-3xl mx-auto space-y-4"
         method="POST"
-        action="/api/send"
+        action="send.php"
       >
         <div id="formMessage" class="text-center text-sm mt-4"></div>
         <div class="flex gap-4 flex-col sm:flex-row">
@@ -335,36 +335,21 @@
           e.preventDefault(); // Stop normal form submission
 
           const form = e.target;
+          const formData = new FormData(form);
           const messageDiv = document.getElementById("formMessage");
-
-          const data = {
-            first_name: form.elements["first_name"].value.trim(),
-            last_name: form.elements["last_name"].value.trim(),
-            email: form.elements["email"].value.trim(),
-            phone: form.elements["phone"].value.trim(),
-            accept_policy: !!form.elements["accept_policy"].checked,
-            consent_sms: !!form.elements["consent_sms"].checked,
-          };
 
           fetch(form.action, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
+            body: formData,
           })
-            .then((response) => response.json())
+            .then((response) => response.text())
             .then((result) => {
-              if (result.ok) {
-                messageDiv.innerText = result.message || "Message sent successfully!";
-                messageDiv.classList.remove("text-red-500");
-                messageDiv.classList.add("text-green-500");
-                form.reset();
-              } else {
-                messageDiv.innerText = result.error || "There was an error sending the message.";
-                messageDiv.classList.remove("text-green-500");
-                messageDiv.classList.add("text-red-500");
-              }
+              messageDiv.innerText = result;
+              messageDiv.classList.remove("text-red-500");
+              messageDiv.classList.add("text-green-500");
+              form.reset(); // Reset form fields
             })
-            .catch(() => {
+            .catch((error) => {
               messageDiv.innerText = "There was an error sending the message.";
               messageDiv.classList.remove("text-green-500");
               messageDiv.classList.add("text-red-500");
