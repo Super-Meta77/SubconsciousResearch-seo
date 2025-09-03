@@ -1,0 +1,9 @@
+/* Minimal offline Font Awesome subset for used icons */
+.fas{display:inline-block;font-style:normal;line-height:1;vertical-align:-0.125em}
+.fas::before{content:"";display:inline-block;width:1em;height:1em}
+
+/* Play icon */
+.fas.fa-play::before{background-color:currentColor;-webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M424.4 214.7L72.4 3.7C43.8-13.4 0 4.7 0 41.9V470c0 37.2 43.8 55.3 72.4 38.2l352-211c28.7-17.2 28.7-59.1 0-76.3z"/></svg>') center / contain no-repeat;mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M424.4 214.7L72.4 3.7C43.8-13.4 0 4.7 0 41.9V470c0 37.2 43.8 55.3 72.4 38.2l352-211c28.7-17.2 28.7-59.1 0-76.3z"/></svg>') center / contain no-repeat}
+
+/* Map Marker Alt icon */
+.fas.fa-map-marker-alt::before{background-color:currentColor;-webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M172.268 501.67C26.97 291.031 0 269.412 0 192 0 86 86 0 192 0s192 86 192 192c0 77.412-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80 0-44.183-35.817-80-80-80-44.183 0-80 35.817-80 80 0 44.183 35.817 80 80 80z"/></svg>') center / contain no-repeat;mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M172.268 501.67C26.97 291.031 0 269.412 0 192 0 86 86 0 192 0s192 86 192 192c0 77.412-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80 0-44.183-35.817-80-80-80-44.183 0-80 35.817-80 80 0 44.183 35.817 80 80 80z"/></svg>') center / contain no-repeat}
