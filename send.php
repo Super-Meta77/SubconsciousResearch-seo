@@ -32,7 +32,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Email headers
         $mail->setFrom('mykidsabcmusic@gmail.com', 'Website Form');
-        $mail->addAddress('mykidsabcmusic@gmail.com'); // send to yourself
+        // Send submissions to requested recipient
+        $mail->addAddress('vodaguder@gmail.com');
+        // Allow replies to go directly to the submitter
+        if (!empty($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            $replyName = trim((string)($_POST['first_name'] ?? '') . ' ' . (string)($_POST['last_name'] ?? ''));
+            $mail->addReplyTo($_POST['email'], $replyName !== '' ? $replyName : $_POST['email']);
+        }
 
         // Email content
         $mail->isHTML(false);
