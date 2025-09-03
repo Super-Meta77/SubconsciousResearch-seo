@@ -39,6 +39,13 @@ module.exports = async (req, res) => {
     const fromName = process.env.FROM_NAME || 'Website Form';
 
     if (!smtpHost || !smtpUser || !smtpPass || !toEmail) {
+      const missing = [
+        !smtpHost && 'SMTP_HOST',
+        !smtpUser && 'SMTP_USER',
+        !smtpPass && 'SMTP_PASS',
+        !toEmail && 'TO_EMAIL',
+      ].filter(Boolean);
+      console.error('Email service not configured. Missing env:', missing.join(', '));
       return res.status(500).json({ ok: false, error: 'Email service not configured.' });
     }
 
