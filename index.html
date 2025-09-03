@@ -36,17 +36,35 @@
     />
     <meta name="twitter:image" content="banner1.webp" />
 
-    <!-- Tailwind CSS (local build) -->
-    <link href="css/tailwind.min.css" rel="stylesheet" />
+    <!-- Tailwind CSS (local build, async) -->
+    <link rel="preload" as="style" href="css/tailwind.min.css" />
+    <link rel="stylesheet" href="css/tailwind.min.css" media="print" onload="this.media='all'" />
 
-    <!-- Google Fonts Optimized -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&family=Poppins:wght@400;700&display=swap&display=swap" rel="stylesheet">
+    <!-- Google Fonts (preconnect + async load with swap) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&family=Poppins:wght@400;700&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&family=Poppins:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/fontawesome.min.css" />
+    <!-- Font Awesome (local, async) -->
+    <link rel="preload" as="style" href="css/fontawesome.min.css" />
+    <link rel="stylesheet" href="css/fontawesome.min.css" media="print" onload="this.media='all'" />
 
     <style>
       html {
@@ -73,7 +91,7 @@
   </head>
 
   <body class="overflow-x-hidden text-white">
-    <img src="banner2.webp" alt="Mobile Image" class="block lg:hidden w-full" />
+    <img src="banner2.webp" alt="Mobile Image" class="block lg:hidden w-full" fetchpriority="high" />
     <!-- Banner Section -->
     <div
       class="banner max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-12 md:py-20 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0"
