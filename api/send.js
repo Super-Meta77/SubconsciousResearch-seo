@@ -18,21 +18,24 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Create transporter
+    // Create transporter with direct credentials (move to env vars in production)
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 587,
       secure: false,
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD
+        user: 'mykidsabcmusic@gmail.com',
+        pass: 'qpia pfyh sajn mgwh'
       }
     });
 
     // Prepare email content
     const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: 'vodaguder@gmail.com', // Updated recipient email
+      from: {
+        name: 'Website Form',
+        address: 'mykidsabcmusic@gmail.com'
+      },
+      to: 'vodaguder@gmail.com',
       subject: 'New Form Submission',
       text: `
 First Name: ${req.body.first_name}
@@ -59,6 +62,6 @@ Consent SMS: Yes
     return res.status(200).json({ message: 'Message sent successfully!' });
   } catch (error) {
     console.error('Mailer Error:', error);
-    return res.status(500).json({ error: 'Failed to send email' });
+    return res.status(500).json({ error: error.message || 'Failed to send email' }); // Return actual error message
   }
 }
