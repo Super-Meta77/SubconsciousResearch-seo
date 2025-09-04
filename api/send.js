@@ -35,7 +35,7 @@ export default async function handler(req, res) {
         name: 'Website Form',
         address: 'mykidsabcmusic@gmail.com'
       },
-      to: 'vodaguder@gmail.com',
+      to: 'mykidsabcmusic@gmail.com',
       subject: 'New Form Submission',
       text: `
 First Name: ${req.body.first_name}
