@@ -255,7 +255,7 @@
         id="contactForm"
         class="mt-8 max-w-3xl mx-auto space-y-4"
         method="POST"
-        action="send.php"
+        action="/api/send"
       >
         <div id="formMessage" class="text-center text-sm mt-4"></div>
         <div class="flex gap-4 flex-col sm:flex-row">
@@ -340,17 +340,23 @@
 
           fetch(form.action, {
             method: "POST",
-            body: formData,
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(Object.fromEntries(formData)),
           })
-            .then((response) => response.text())
-            .then((result) => {
-              messageDiv.innerText = result;
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.error) {
+                throw new Error(data.error);
+              }
+              messageDiv.innerText = data.message;
               messageDiv.classList.remove("text-red-500");
               messageDiv.classList.add("text-green-500");
               form.reset(); // Reset form fields
             })
             .catch((error) => {
-              messageDiv.innerText = "There was an error sending the message.";
+              messageDiv.innerText = error.message || "There was an error sending the message.";
               messageDiv.classList.remove("text-green-500");
               messageDiv.classList.add("text-red-500");
             });

@@ -1,0 +1,14 @@
+{
+  "name": "subconscious-research-seo",
+  "version": "1.0.0",
+  "description": "The Power of the Subconscious Mind - Event Registration",
+  "main": "index.js",
+  "scripts": {
+    "start": "vercel dev",
+    "deploy": "vercel deploy --prod"
+  },
+  "dependencies": {
+    "@vercel/node": "^3.0.0",
+    "nodemailer": "^6.9.0"
+  }
+}
