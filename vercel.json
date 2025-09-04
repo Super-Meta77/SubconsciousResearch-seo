@@ -5,7 +5,14 @@
     { "src": "api/**/*.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/(.*)", "dest": "/public/$1" }
+    { 
+      "src": "/api/(.*)", 
+      "dest": "api/$1.js",
+      "methods": ["POST", "OPTIONS"]
+    },
+    { 
+      "src": "/(.*)", 
+      "dest": "/public/$1" 
+    }
   ]
 }

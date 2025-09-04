@@ -32,7 +32,7 @@ export default async function handler(req, res) {
     // Prepare email content
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
+      to: 'vodaguder@gmail.com', // Updated recipient email
       subject: 'New Form Submission',
       text: `
 First Name: ${req.body.first_name}
